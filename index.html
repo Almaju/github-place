@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            const COLOR_TO_INDEX = [
+                '#6D001A',
+                '#BE0039',
+                '#FF4500',
+                '#FFA800',
+                '#FFD635',
+                '#FFF8B8',
+                '#00A368',
+                '#00CC78',
+                '#7EED56',
+                '#00756F',
+                '#009EAA',
+                '#00CCC0',
+                '#2450A4',
+                '#3690EA',
+                '#51E9F4',
+                '#493AC1',
+                '#6A5CFF',
+                '#94B3FF',
+                '#811E9F',
+                '#B44AC0',
+                '#E4ABFF',
+                '#DE107F',
+                '#FF3881',
+                '#FF99AA',
+                '#6D482F',
+                '#9C6926',
+                '#FFB470',
+                '#000000',
+                '#515252',
+                '#898D90',
+                '#D4D7D9',
+                '#FFFFFF',
+            ];
+
+            (function() {
+                fetch("https://raw.githubusercontent.com/YisusOnDev/esplace-war/main/orders.json")
+                    .then(res => res.json())
+                    .then(res => {
+                        res.forEach(array => {
+                            array.forEach(object => {
+                                const color = COLOR_TO_INDEX[object[2]];
+                                const html = document.createElement("div");
+                                html.innerHTML = `<div style="height:1px;width:1px;background-color:${color};position:absolute;left:${object[0]}px;top:${object[1]}px;" />`;
+                                document.getElementById('main').append(html);
+                            })
+                        })
+                    })
+            })();
+        </script>
+    </head>
+<body>
+<div id="main"></div>
+</body>
+</html>
